@@ -1,7 +1,7 @@
 const shipFactory = (length) => {
   const shipArray = Array(length).fill(0);
 
-  const getLength = () => length;
+  const getLength = () => shipArray.length;
   const getShipArray = () => shipArray;
   const hit = (pos) => {
     shipArray[pos] = 1;
