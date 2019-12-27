@@ -2,7 +2,7 @@ import shipFactory from '../src/ship';
 
 let testShip
 beforeEach(() => {
-  testShip = shipFactory(5);
+  testShip = shipFactory('test', 5, 1);
 });
 
 test("getLength returns length of ship", () => {
