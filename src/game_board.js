@@ -77,20 +77,25 @@ const gameBoard = () => {
         return true;
       }
     }
-    else return false;    
+    else 
+    {
+      board[x][y] = 'missed';
+      return false;
+    }    
   };
 
-  const shipSunk = (ship) => {
+  const allShipsSunk = () => {
     let sank = true;
-    ship.getShipArray().find((element) => {
-      if (element === 0) {
+    ships.forEach((ship) => {
+      if (!ship.isSunk()) {
         sank = false;
+        return; 
       }
     });
     return sank;
   };
 
-  return {ships, getBoard, placeShip, checkOccupied, checkOccupiedByShip, receiveAttack, shipSunk}
+  return {ships, getBoard, placeShip, checkOccupied, checkOccupiedByShip, receiveAttack, allShipsSunk}
 };
 
 export default gameBoard;

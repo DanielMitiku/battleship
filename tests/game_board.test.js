@@ -32,6 +32,12 @@ test('ship should not receive attack', () => {
   expect(testBoard.receiveAttack(2,6)).toBe(false);
 });
 
+test('ship should record missed attack', () => {
+  testBoard.placeShip(1,1,testShip);
+  testBoard.receiveAttack(2,6);
+  expect(testBoard.getBoard()[2][6]).toEqual('missed');
+});
+
 test('ship should receive attack', () => {
   testBoard.placeShip(1,1,testShip);
   expect(testBoard.receiveAttack(1,1)).toBe(true);
