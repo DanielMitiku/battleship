@@ -11,7 +11,8 @@ const player = (name, computer=0) => {
   };
 
   const attack = (enemyBoard, x, y) => {
-    if (enemyBoard.getBoard()[x][y] === 0) {
+    let enemyBoardValue = enemyBoard.getBoard()[x][y];
+    if (enemyBoardValue !== 'missed') {
       enemyBoard.receiveAttack(x,y);
       return true;
     } 
@@ -22,20 +23,21 @@ const player = (name, computer=0) => {
     let xMove, yMove; 
     let nextXMove = nextMove[0];
     let nextYMove = nextMove[1];
-    if (nextXMove !== -1 && nextYMove !== -1 && nextXMove < 10 && nextYMove < 10 && enemyBoard.getBoard()[nextXMove][nextYMove] === 0) {
+    if (nextXMove !== -1 && nextYMove !== -1 && nextXMove < 10 && nextYMove < 10 && enemyBoard.getBoard()[nextXMove][nextYMove] !== 'missed') {
       xMove = nextXMove;
       yMove = nextYMove;
     }
     else {
-      while (enemyBoard.getBoard()[xMove][yMove] !== 0) {
-        //xMove
-        //yMove
+      do {
+        xMove = Math.floor(Math.random() * 10);
+        yMove = Math.floor(Math.random() * 10);
       }
+      while (enemyBoard.getBoard()[xMove][yMove] === 'missed');
     }
     
-    let move = enemyBoard.receiveAttack(x,y);
+    let move = enemyBoard.receiveAttack(xMove,yMove);
     if (move === true) {
-      //let randomBetweenXY
+      let randomBetweenXY = Math.round(Math.random());
       if (randomBetweenXY === 0) {
         nextMove[0] = xMove;
         nextMove[1] = yMove + 1;
@@ -44,9 +46,11 @@ const player = (name, computer=0) => {
         nextMove[0] = xMove + 1;
         nextMove[1] = yMove;
       }
+      return true;
     } else {
       nextMove[0] = -1;
       nextMove[1] = -1;
+      return true;
     }
   };
 

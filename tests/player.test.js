@@ -5,8 +5,9 @@ import player from '../src/player';
 let testShip, testBoard, testPlayerHuman, testPlayerComputer
 
 beforeEach(() => {
-  testShip = shipFactory('test', 5, 1);
+  testShip = shipFactory('test1', 5, 1);
   testBoard = gameBoard();
+  testBoard.placeShip(0,0,testShip);
   testPlayerHuman = player('testPlayerHuman');
   testPlayerComputer = player('testPlayerComputer', 1);
 });
@@ -21,4 +22,12 @@ test("isCompupter returns true if player is computer", () => {
 
 test("isCompupter returns true if player is computer", () => {
   expect(testPlayerComputer.isComputer()).toBe(true);
+});
+
+test("attack attacks on enemy's board", () => {
+  expect(testPlayerHuman.attack(testBoard,0,0)).toBe(true);
+});
+
+test("computer player makes random move", () => {
+  expect(testPlayerComputer.makeRandomMove(testBoard)).toBe(true);
 });
