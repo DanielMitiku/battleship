@@ -19,6 +19,11 @@
    border: 1px solid black;
  }
 
- table td {
+table td {
   padding: 0;
+}
+
+.occupied {
+  background: black;
+  color: white;
 }

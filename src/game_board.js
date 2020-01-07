@@ -2,7 +2,7 @@ const gameBoard = () => {
   const boardSize = 10;
   const board = [];
   for (let i=0; i<boardSize; i += 1) {
-    board.push(Array(boardSize).fill(0));
+    board.push(Array(boardSize).fill(null));
   }
   
   const ships = [];
@@ -29,7 +29,7 @@ const gameBoard = () => {
   };
 
   const checkOccupied = (x,y) => {
-    if (board[x][y] !== 0) {
+    if (board[x][y] !== null) {
       return true;
     }
     return false;
@@ -38,14 +38,14 @@ const gameBoard = () => {
   const checkOccupiedByShip = (x,y,ship) => {
     if(ship.isVertical()) {
       for (let i = 0; i < ship.getLength(); i += 1) {
-        if (board[x][y] !== 0) {
+        if (board[i][y] !== null) {
           return true;
         }
       }
     }
     else {
       for (let i = 0; i < ship.getLength(); i += 1) {
-        if (board[x][y] !== 0) {
+        if (board[x][i] !== null) {
           return true;
         }
       }
@@ -79,7 +79,7 @@ const gameBoard = () => {
     }
     else 
     {
-      board[x][y] = 'missed';
+      board[x][y] = "missed";
       return false;
     }    
   };
@@ -95,7 +95,7 @@ const gameBoard = () => {
     return sank;
   };
 
-  return {ships, getBoard, placeShip, checkOccupied, checkOccupiedByShip, receiveAttack, allShipsSunk}
+  return { ships, getBoard, getShip, placeShip, checkOccupied, checkOccupiedByShip, receiveAttack, allShipsSunk }
 };
 
 export default gameBoard;
