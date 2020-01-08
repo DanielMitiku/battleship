@@ -37,7 +37,6 @@ const gamePlay = () => {
   playerBoard.placeShips(player1Ships);
   computerBoard.placeShips(computerShips);
 
-
   renderPlayerBoard(playerBoard, playerTable);
   renderComputerBoard(computerBoard, computerTable);
   
