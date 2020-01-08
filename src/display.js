@@ -77,18 +77,17 @@ const renderComputerBoard = (board, table) => {
         const presentShip = board.getShip(content);
         if (presentShip.isVertical()) {
           if (presentShip.getShipArray()[i - presentShip.getStartingXLocation()] === 0){
-            // cell.classList.add("bg-primary");
             cell.textContent = "";
           } else {
-            cell.classList.add("text-warning", "font-weight-bold");
+            cell.classList.add("bg-primary", "text-warning", "font-weight-bold");
             cell.textContent = ".";
           }
         } else {
           if (presentShip.getShipArray()[j - presentShip.getStartingYLocation()] === 0) {
-            cell.classList.add("bg-primary");
+            // cell.classList.add("bg-primary");
             cell.textContent = "";
           } else {
-            cell.classList.add("text-warning", "font-weight-bold");
+            cell.classList.add("bg-primary", "text-warning", "font-weight-bold");
             cell.textContent = ".";
           } 
         } 

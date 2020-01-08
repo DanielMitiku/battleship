@@ -28,6 +28,17 @@ const gameBoard = () => {
     else return false;
   };
 
+  const placeShips = (ships) => {
+    ships.forEach((ship) => {
+      let x = Math.floor(Math.random() * boardSize);
+      let y = Math.floor(Math.random() * boardSize);
+      while (!placeShip(x, y, ship)) {
+        x = Math.floor(Math.random() * boardSize);
+        y = Math.floor(Math.random() * boardSize);
+      }
+    });
+  }
+
   const checkOccupied = (x,y) => {
     if (board[x][y] !== null) {
       return true;
@@ -38,14 +49,14 @@ const gameBoard = () => {
   const checkOccupiedByShip = (x,y,ship) => {
     if(ship.isVertical()) {
       for (let i = 0; i < ship.getLength(); i += 1) {
-        if (board[i][y] !== null) {
+        if (board[i+x][y] !== null) {
           return true;
         }
       }
     }
     else {
       for (let i = 0; i < ship.getLength(); i += 1) {
-        if (board[x][i] !== null) {
+        if (board[x][i+y] !== null) {
           return true;
         }
       }
@@ -95,7 +106,7 @@ const gameBoard = () => {
     return sank;
   };
 
-  return { ships, getBoard, getShip, placeShip, checkOccupied, checkOccupiedByShip, receiveAttack, allShipsSunk }
+  return { ships, getBoard, getShip, placeShip, placeShips, checkOccupied, checkOccupiedByShip, receiveAttack, allShipsSunk }
 };
 
 export default gameBoard;
