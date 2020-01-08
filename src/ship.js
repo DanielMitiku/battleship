@@ -7,33 +7,33 @@ const shipFactory = (name, length, orientation) => {
   const getName = () => name;
   const getShipArray = () => shipArray;
   const isVertical = () => {
-    if(orientation == 1) {
+    if (orientation === 1) {
       return true;
     }
     return false;
-  }
+  };
   const hit = (pos) => {
     shipArray[pos] = 1;
-  }
+  };
 
   const isHit = (pos) => {
     if (shipArray[pos] === 1) {
       return true;
     }
     return false;
-  }
+  };
 
   const isSunk = () => {
     let status = true;
-    shipArray.forEach(value => {
+    shipArray.forEach((value) => {
       if (value === 0) {
         status = false;
       }
     });
     return status;
-  }
+  };
 
-  const setStartingLocation = (x,y) => {
+  const setStartingLocation = (x, y) => {
     xLocation = x;
     yLocation = y;
   };
@@ -41,7 +41,18 @@ const shipFactory = (name, length, orientation) => {
   const getStartingXLocation = () => xLocation;
   const getStartingYLocation = () => yLocation;
 
-  return { getName, getShipArray, isVertical, hit, isHit, isSunk, getLength, setStartingLocation, getStartingXLocation, getStartingYLocation }
-}
+  return {
+    getName,
+    getShipArray,
+    isVertical,
+    hit,
+    isHit,
+    isSunk,
+    getLength,
+    setStartingLocation,
+    getStartingXLocation,
+    getStartingYLocation,
+  };
+};
 
 export default shipFactory;
