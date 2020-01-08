@@ -1,5 +1,11 @@
 const player = (name, computer=0) => {
-  const nextMove = [-1,-1];
+  const allMoves = [];
+  const madeMoves = [];
+  for (let i=0; i < 10; i+=1) {
+    for (let j=0; j < 10; j+=1) {
+      allMoves.push([i, j])
+    }
+  }
 
   const getName = () => name;
 
@@ -15,42 +21,17 @@ const player = (name, computer=0) => {
   };
   
   const makeRandomMove = (enemyBoard) => {
-    let xMove, yMove; 
-    let nextXMove = nextMove[0];
-    let nextYMove = nextMove[1];
-    if (nextXMove !== -1 && nextYMove !== -1 && nextXMove < 10 && nextYMove < 10 && enemyBoard.getBoard()[nextXMove][nextYMove] !== 'missed') {
-      xMove = nextXMove;
-      yMove = nextYMove;
+    let moveIdx = Math.floor(Math.random() * 100);
+    while (madeMoves.includes(moveIdx)) {
+      moveIdx = Math.floor(Math.random() * 100);
     }
-    else {
-      do {
-        xMove = Math.floor(Math.random() * 10);
-        yMove = Math.floor(Math.random() * 10);
-      }
-      while (enemyBoard.getBoard()[xMove][yMove] === 'missed');
-    }
-    
-    let move = enemyBoard.receiveAttack(xMove,yMove);
-    if (move === true) {
-      let randomBetweenXY = Math.round(Math.random());
-      if (randomBetweenXY === 0) {
-        nextMove[0] = xMove;
-        nextMove[1] = yMove + 1;
-      }
-      else {
-        nextMove[0] = xMove + 1;
-        nextMove[1] = yMove;
-      }
-      return true;
-    } else {
-      nextMove[0] = -1;
-      nextMove[1] = -1;
-      return true;
-    }
-  };
+    let move = allMoves[moveIdx];
+    enemyBoard.receiveAttack(move[0], move[1]);
+    madeMoves.push(moveIdx);
+    return true;
+  }
 
   return { getName, isComputer, attack, makeRandomMove }
-
 };
 
 export default player;

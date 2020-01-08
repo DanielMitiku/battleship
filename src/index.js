@@ -45,9 +45,7 @@ const gamePlay = () => {
 
     if (player1.attack(computerBoard, location[0], location[2]) === true) {
       renderComputerBoard(computerBoard, computerTable);
-      console.log(computerBoard.getBoard());
       if (computerBoard.allShipsSunk()) {
-        console.log("You win")
         winBoard.textContent = "You win";
         computerTable.addEventListener("click", (event) => {
           event.stopPropagation();
@@ -58,7 +56,6 @@ const gamePlay = () => {
       computer.makeRandomMove(playerBoard);
       renderPlayerBoard(playerBoard, playerTable);
       if (playerBoard.allShipsSunk()) {
-        console.log("Computer wins");
         winBoard.textContent = "Computer wins";
         computerTable.addEventListener("click", (event) => {
           event.stopPropagation();

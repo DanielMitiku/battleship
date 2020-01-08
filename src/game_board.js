@@ -33,7 +33,6 @@ const gameBoard = () => {
     let y = Math.floor(Math.random() * boardSize/2);
     ships.forEach((ship) => {
       while (placeShip(x, y, ship) === false) {
-        console.log(x, y)
         x = Math.floor(Math.random() * boardSize/2);
         y = Math.floor(Math.random() * boardSize/2);
       }
