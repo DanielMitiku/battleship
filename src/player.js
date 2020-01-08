@@ -10,15 +10,6 @@ const player = (name, computer=0) => {
     return true;
   };
 
-  // const attack = (enemyBoard, x, y) => {
-  //   let enemyBoardValue = enemyBoard.getBoard()[x][y];
-  //   if (enemyBoardValue !== 'missed') {
-  //     enemyBoard.receiveAttack(x,y);
-  //     return true;
-  //   } 
-  //   return false;
-  // };
-
   const attack = (enemyBoard, x, y) => {
     return enemyBoard.receiveAttack(x,y);
   };

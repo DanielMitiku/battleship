@@ -39,12 +39,12 @@ const gameBoard = () => {
     });
   }
 
-  const checkOccupied = (x,y) => {
-    if (board[x][y] !== null) {
-      return true;
-    }
-    return false;
-  };
+  // const checkOccupied = (x,y) => {
+  //   if (board[x][y] !== null) {
+  //     return true;
+  //   }
+  //   return false;
+  // };
 
   const checkOccupiedByShip = (x,y,ship) => {
     if(ship.isVertical()) {
@@ -89,7 +89,6 @@ const gameBoard = () => {
         }
       } 
     } else if (board[x][y] === "missed") {
-      console.log("I am already missed");
       return false;
     } else {
       board[x][y] = "missed";
@@ -107,7 +106,7 @@ const gameBoard = () => {
     return sank;
   };
 
-  return { ships, getBoard, getShip, placeShip, placeShips, checkOccupied, checkOccupiedByShip, receiveAttack, allShipsSunk }
+  return { ships, getBoard, getShip, placeShip, placeShips, checkOccupiedByShip, receiveAttack, allShipsSunk }
 };
 
 export default gameBoard;
