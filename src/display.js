@@ -37,7 +37,7 @@ const renderPlayerBoard = (board, table) => {
       if (content === null) {
         cell.textContent = "";
       } else if (content === "missed") {
-        cell.textContent = "X";
+        cell.innerHTML = "&#9874;";
       } else {
         const presentShip = board.getShip(content);
         if (presentShip.isVertical()) {
@@ -45,16 +45,16 @@ const renderPlayerBoard = (board, table) => {
             cell.classList.add("bg-primary");
             cell.textContent = "";
           } else {
-            cell.classList.add("bg-primary", "text-warning", "font-weight-bold");
-            cell.textContent = ".";
+            cell.classList.add("bg-primary", "text-black", "font-weight-bold");
+            cell.innerHTML = "&#10042;";
           }
         } else {
           if (presentShip.getShipArray()[j - presentShip.getStartingYLocation()] === 0) {
             cell.classList.add("bg-primary");
             cell.textContent = "";
           } else {
-            cell.classList.add("bg-primary", "text-warning", "font-weight-bold");
-            cell.textContent = ".";
+            cell.classList.add("bg-primary", "text-black", "font-weight-bold");
+            cell.innerHTML = "&#10042;";
           } 
         }
           
@@ -72,7 +72,7 @@ const renderComputerBoard = (board, table) => {
       if (content === null) {
         cell.textContent = "";
       } else if (content === "missed") {
-        cell.textContent = "X";
+        cell.innerHTML = "&#9874;";
       } else {
         const presentShip = board.getShip(content);
         if (presentShip.isVertical()) {
@@ -80,16 +80,16 @@ const renderComputerBoard = (board, table) => {
             cell.classList.add("bg-primary")
             cell.textContent = "";
           } else {
-            cell.classList.add("bg-primary", "text-warning", "font-weight-bold");
-            cell.textContent = ".";
+            cell.classList.add("bg-primary", "text-black", "font-weight-bold");
+            cell.innerHTML = "&#10042;";
           }
         } else {
           if (presentShip.getShipArray()[j - presentShip.getStartingYLocation()] === 0) {
             cell.classList.add("bg-primary");
             cell.textContent = "";
           } else {
-            cell.classList.add("bg-primary", "text-warning", "font-weight-bold");
-            cell.textContent = ".";
+            cell.classList.add("bg-primary", "text-black", "font-weight-bold");
+            cell.innerHTML = "&#10042;";
           } 
         } 
       }

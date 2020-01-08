@@ -39,13 +39,6 @@ const gameBoard = () => {
     });
   }
 
-  // const checkOccupied = (x,y) => {
-  //   if (board[x][y] !== null) {
-  //     return true;
-  //   }
-  //   return false;
-  // };
-
   const checkOccupiedByShip = (x,y,ship) => {
     if(ship.isVertical()) {
       for (let i = 0; i < ship.getLength(); i += 1) {
