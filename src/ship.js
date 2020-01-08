@@ -15,6 +15,14 @@ const shipFactory = (name, length, orientation) => {
   const hit = (pos) => {
     shipArray[pos] = 1;
   }
+
+  const isHit = (pos) => {
+    if (shipArray[pos] === 1) {
+      return true;
+    }
+    return false;
+  }
+
   const isSunk = () => {
     let status = true;
     shipArray.forEach(value => {
@@ -33,7 +41,7 @@ const shipFactory = (name, length, orientation) => {
   const getStartingXLocation = () => xLocation;
   const getStartingYLocation = () => yLocation;
 
-  return { getName, getShipArray, isVertical, hit, isSunk, getLength, setStartingLocation, getStartingXLocation, getStartingYLocation }
+  return { getName, getShipArray, isVertical, hit, isHit, isSunk, getLength, setStartingLocation, getStartingXLocation, getStartingYLocation }
 }
 
 export default shipFactory;

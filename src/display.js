@@ -77,6 +77,7 @@ const renderComputerBoard = (board, table) => {
         const presentShip = board.getShip(content);
         if (presentShip.isVertical()) {
           if (presentShip.getShipArray()[i - presentShip.getStartingXLocation()] === 0){
+            cell.classList.add("bg-primary")
             cell.textContent = "";
           } else {
             cell.classList.add("bg-primary", "text-warning", "font-weight-bold");
@@ -84,7 +85,7 @@ const renderComputerBoard = (board, table) => {
           }
         } else {
           if (presentShip.getShipArray()[j - presentShip.getStartingYLocation()] === 0) {
-            // cell.classList.add("bg-primary");
+            cell.classList.add("bg-primary");
             cell.textContent = "";
           } else {
             cell.classList.add("bg-primary", "text-warning", "font-weight-bold");

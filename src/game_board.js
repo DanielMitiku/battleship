@@ -25,7 +25,7 @@ const gameBoard = () => {
       ships.push(ship);
       return true;
     }
-    else return false;
+    return false;
   };
 
   const placeShips = (ships) => {
@@ -75,23 +75,25 @@ const gameBoard = () => {
   };
 
   const receiveAttack = (x,y) => {
-    if (checkOccupied(x,y) === true) {
+    if (board[x][y] !== null && board[x][y] !== "missed") {
       let shipName = board[x][y];
       if(getShip(shipName) !== false) {
         let shipHit = getShip(shipName);
-        if (shipHit.isVertical()) {
+        if (shipHit.isVertical() && !shipHit.isHit(x - shipHit.getStartingXLocation())) {
           shipHit.hit(x - shipHit.getStartingXLocation());
+          return true;
         }
-        else {
+        else if (!shipHit.isVertical() && !shipHit.isHit(y - shipHit.getStartingYLocation())) {
           shipHit.hit(y - shipHit.getStartingYLocation());
+          return true;
         }
-        return true;
-      }
-    }
-    else 
-    {
-      board[x][y] = "missed";
+      } 
+    } else if (board[x][y] === "missed") {
+      console.log("I am already missed");
       return false;
+    } else {
+      board[x][y] = "missed";
+      return true;
     }    
   };
 
@@ -100,7 +102,6 @@ const gameBoard = () => {
     ships.forEach((ship) => {
       if (!ship.isSunk()) {
         sank = false;
-        return; 
       }
     });
     return sank;

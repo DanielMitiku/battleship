@@ -5,7 +5,6 @@ import "./style.css";
 import shipFactory from "./ship";
 
 
-
 const gamePlay = () => {
   displayBoards();
   const computerTable = document.querySelector('.computer-div table');
@@ -16,28 +15,23 @@ const gamePlay = () => {
   const player1 = player("Player1");
   const computer = player("Computer", 1);
 
+  const resetBtn = document.querySelector('.reset-btn');
+  const winBoard = document.querySelector('.winner');
+
   const player1Ships = [
-    shipFactory("p1", 3, 0),
-    shipFactory("p2", 2, 0),
-    shipFactory("p3", 1, 0),
-    shipFactory("p4", 3, 0),
-    shipFactory("p5", 2, 0),
-    shipFactory("p6", 2, 0),
-    shipFactory("p7", 3, 0),
-    shipFactory("p8", 2, 0),
-    shipFactory("p9", 2, 0)
+    shipFactory("Carrier", 5, 0),
+    shipFactory("Battleship", 4, 1),
+    shipFactory("Destroyer", 3, 0),
+    shipFactory("Submarine", 3, 1),
+    shipFactory("Patrol", 2, 0)
   ]
 
   const computerShips = [
-    shipFactory("c1", 3, 0),
-    shipFactory("c2", 2, 0),
-    shipFactory("c3", 1, 0),
-    shipFactory("c4", 3, 0),
-    shipFactory("c5", 2, 0),
-    shipFactory("c6", 2, 0),
-    shipFactory("c7", 3, 0),
-    shipFactory("c8", 2, 0),
-    shipFactory("c9", 2, 0)
+    shipFactory("Carrier", 5, 0),
+    shipFactory("Battleship", 4, 1),
+    shipFactory("Destroyer", 3, 0),
+    shipFactory("Submarine", 3, 1),
+    shipFactory("Patrol", 2, 0)
   ]
 
   playerBoard.placeShips(player1Ships);
@@ -49,11 +43,13 @@ const gamePlay = () => {
   
   const gameRound = () => {
     const location = event.target.parentElement.dataset.xy;
-      player1.attack(computerBoard, location[0], location[2]);
+
+    if (player1.attack(computerBoard, location[0], location[2]) === true) {
       renderComputerBoard(computerBoard, computerTable);
       console.log(computerBoard.getBoard());
       if (computerBoard.allShipsSunk()) {
         console.log("You win")
+        winBoard.textContent = "You win";
         computerTable.addEventListener("click", (event) => {
           event.stopPropagation();
         }, true);
@@ -64,16 +60,23 @@ const gamePlay = () => {
       renderPlayerBoard(playerBoard, playerTable);
       if (playerBoard.allShipsSunk()) {
         console.log("Computer wins");
+        winBoard.textContent = "Computer wins";
         computerTable.addEventListener("click", (event) => {
           event.stopPropagation();
         }, true);
         return;
       }
+    }
   }
   computerTable.addEventListener("click", (event) => gameRound())
+  resetBtn.addEventListener("click", () => {
+  location.reload()
+});
 }
 
-gamePlay();
+gamePlay()
+
+
 
 
 
