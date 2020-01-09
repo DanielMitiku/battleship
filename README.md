@@ -2,7 +2,6 @@
 
 > Battleship is a game played by a human player against the computer. The player attacks the computer by hitting locations on the computer board and vice versa.
 
-![app-screenshot](src/Screenshot_2020-01-09 Batlleship.png)
 
 The player and computer take turns to attack each other by hitting locations on their opponent's board. If the location holds a ship, the ship is hit. The player who sinks all of the opponents ship first wins the game. 
 
@@ -15,7 +14,7 @@ The player and computer take turns to attack each other by hitting locations on 
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://raw.githack.com/DanielMitiku/battleship/feature/dist/index.html)
 
 ## Getting Started
 
