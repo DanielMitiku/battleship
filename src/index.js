@@ -62,7 +62,13 @@ const gamePlay = () => {
       }
     }
   };
-  computerTable.addEventListener('click', (event) => gameRound(event));
+
+  computerTable.addEventListener('click', (event) => {
+    if (event.target.tagName.toLowerCase() === "div"){
+      gameRound(event);
+    }
+  });
+
   resetBtn.addEventListener('click', () => {
     window.location.reload();
   });
