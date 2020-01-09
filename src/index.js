@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-globals */
+
 import gameBoard from './game_board';
 import { displayBoards, renderPlayerBoard, renderComputerBoard } from './display';
 import player from './player';
@@ -64,7 +66,7 @@ const gamePlay = () => {
   };
 
   computerTable.addEventListener('click', (event) => {
-    if (event.target.tagName.toLowerCase() === "div"){
+    if (event.target.tagName.toLowerCase() === 'div') {
       gameRound(event);
     }
   });

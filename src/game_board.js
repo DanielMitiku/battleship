@@ -45,12 +45,12 @@ const gameBoard = () => {
   };
 
   const placeShips = (myShips) => {
-    let x = Math.floor(Math.random() * boardSize / 1.2);
-    let y = Math.floor(Math.random() * boardSize / 2);
+    let x = Math.floor(Math.random() * (boardSize / 1.2));
+    let y = Math.floor(Math.random() * (boardSize / 2));
     myShips.forEach((ship) => {
       while (placeShip(x, y, ship) === false) {
-        x = Math.floor(Math.random() * boardSize / 2);
-        y = Math.floor(Math.random() * boardSize / 1.3);
+        x = Math.floor(Math.random() * (boardSize / 2));
+        y = Math.floor(Math.random() * (boardSize / 1.3));
       }
     });
   };

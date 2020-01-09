@@ -34,7 +34,7 @@ const player = (name, computer = 0) => {
     } else if (randomNum < 5) {
       nextMoveIdx = moveIdx + 10;
     } else if (randomNum < 9) {
-      nextMoveIdx = Math.abs(moveIdx - 10)
+      nextMoveIdx = Math.abs(moveIdx - 10);
     } else {
       nextMoveIdx = Math.abs(moveIdx - 1);
     }
