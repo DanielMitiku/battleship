@@ -14,7 +14,7 @@ The player and computer take turns to attack each other by hitting locations on 
 
 ## Live Demo
 
-[Live Demo Link](https://raw.githack.com/DanielMitiku/battleship/feature/dist/index.html)
+[Live Demo Link](https://rawcdn.githack.com/DanielMitiku/battleship/126ea723ff76f7db65f0803178434633c6c7bf3c/dist/index.html)
 
 ## Getting Started
 
