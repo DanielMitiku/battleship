@@ -85,6 +85,7 @@ const gameBoard = () => {
       board[x][y] = 'missed';
       return true;
     }
+    return false;
   };
 
   const allShipsSunk = () => {

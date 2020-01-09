@@ -28,6 +28,11 @@ test("attack attacks on enemy's board", () => {
   expect(testPlayerHuman.attack(testBoard,0,0)).toBe(true);
 });
 
+test("cannot attack same location twice", () => {
+  testPlayerHuman.attack(testBoard,0,0);
+  expect(testPlayerHuman.attack(testBoard,0,0)).toBe(false);
+});
+
 test("computer player makes random move", () => {
   expect(testPlayerComputer.makeRandomMove(testBoard)).toBe(true);
 });
